@@ -1,0 +1,3 @@
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !(check_login.php)|(login_status.php)|(logout.php)
+RewriteRule .* - [R=404,L]

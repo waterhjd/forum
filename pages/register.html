@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+
+   <meta charset="utf-8">
+   <title> Register </title>
+   <link rel="stylesheet" type="text/css" href="../css/register.css">
+   <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+   <base href="/">
+
+   <script>
+   $("document").ready(function(){
+      $('#register').bind('click', register);
+   });
+   
+   function register() {
+      $.ajax({
+         type: "post",
+         url: "../logic/register/register_user.php",
+         data: $('#registerForm').serializeArray(), 
+         success: function (data) {
+         console.log(data);
+            if (data == "success")
+               window.location.assign("http://chatbat.ca/login");
+            else { 
+               $("#errorMessages").empty();
+               $('#errorMessages').append("<li> " + data + " error </li>");
+            }
+         }
+     });
+   }
+
+
+   </script>
+
+</head>
+<body>
+
+
+   <div class="loginContainer">
+
+   <h2 id="title"> User Registration </h2>
+   <ul id="errorMessages"></ul>
+   <form id="registerForm">
+        <input type="text" name="username" placeholder="Username" required><br>
+        <input type="password" name="password" placeholder="Password" required><br>
+        <input type="password" name="confirm" placeholder="Confirm Password" required><br>
+        <button  class= "register" type= "button" id="register"> Register </button>
+    </form>
+   </div>
+</body>
+</html>

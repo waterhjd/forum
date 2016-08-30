@@ -1,0 +1,55 @@
+<html>
+<head>
+<title>JQuery Example</title>
+<link rel="stylesheet" type="text/css" href="../css/login.css">
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+<script>
+
+$("document").ready(function() {
+   $('#login').bind('click', login);
+});
+
+/*function getDblFromServer() {
+   $("span").load("check_login.php",
+   $("#loginForm").serializeArray());
+   window.location.replace("http://www.chatbat.ca/");
+}
+*/
+
+function login() {
+   $.ajax({
+      type: "post",
+      url: "../logic/login/check_login.php",
+      data: $('#loginForm').serializeArray(), 
+      success: function (data) {
+        console.log(data);
+         if (data == "true")
+            window.location.assign("http://chatbat.ca/pages/loggedIn.php")
+      }
+  });
+}
+</script>
+<base href="/">
+
+</head>
+
+<body id="theBody">
+
+<form id="loginForm">
+
+   <div>
+      <h2> User Login</h2>
+      <span></span>
+   </div>
+
+   <input type="text" name="username" id="username"></input><br />
+   <input type="password" name="password" id="password"></input><br />
+   <button type="button" id="login"> Login </button>
+   <label>
+      <input type="checkbox" name="remember"> Remember Me? <br>
+   </label>
+</form>
+
+</body>
+
+</html>

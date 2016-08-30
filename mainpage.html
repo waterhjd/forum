@@ -1,0 +1,31 @@
+<html data-ng-app="mainApp">
+<head>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.10/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.10/angular-route.min.js"></script>
+  <script src="script.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/main.css">
+  <meta charset="utf-8">
+
+  <title> Main Page </title>  
+
+</head>
+
+<!-- define angular controller -->
+<body data-ng-controller="mainController">
+  <nav class="navbar">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#"> Home</a></li>
+        <li><a href="#login"> Login</a></li>
+        <li><a href="#register"> Register</a></li>
+      </ul>
+  </nav>
+
+  <div id="main">
+      <div id="load" data-ng-view></div>    
+  </div>
+    
+</body>
+
+</html>
+
